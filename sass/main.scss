@@ -1,0 +1,180 @@
+/* 
+Colours from _Variables.scss
+$ColorBackground: #793560;
+This is a monochromatic colour scheme. 
+Changing $colorBackground will change the tones and values of everything.
+
+
+*/
+
+@import "variables";
+@import "mixins";
+@import "typography";
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@include clearfix;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $ColorBackground;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $ColorHeadings;
+}
+
+p {
+  color: $ColorText;
+}
+
+a {
+  text-decoration: none;
+  color: mix(black, $ColorText, 10%);
+  font-weight: 700;
+  transition: all 750ms ease;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  font-weight: 700;
+  font-family: $bodyFont;
+  font-size: 1.32rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border: 3px solid $ColorDarker;
+  background-color: $ColorDarker;
+  color: $ColorLighter;
+  transition: all 750ms ease;
+  outline: 0;
+
+
+  &:hover {
+	cursor:pointer;
+    background-color: $ColorLighter;
+    color: $ColorDarker;
+  }
+}
+
+/*-- .content-box styles entire content --*/
+.content-box {
+  display: block;
+  text-align: center;
+}
+
+.wrapper {
+  max-width: $maxSiteWidth;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.branding {
+  display: block;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  border: 3px solid $ColorDarker;
+  margin: 1rem auto;
+  text-align: center;
+  background-image: url(../images/back-to-school.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+
+  h1 {
+    padding-top: 8.25rem;
+  }
+}
+
+.main-content {
+  ul {
+    li {
+      background-color: mix(white, $ColorBackground, 70%);
+      text-align: left;
+      color: $ColorText;
+      padding: 1rem;
+      margin-bottom: 1px;
+      @include smallTransition;
+
+      &:hover, &:focus {
+        background-color: mix(white, $ColorBackground, 90%);
+        cursor:pointer;
+
+        &:after {
+          display: block;
+          text-align: right;
+          float: right;
+
+          @include alert;
+
+          content: " remove";
+        }
+      }
+    }
+  }
+}
+
+/*-- Styling footer --*/
+footer {
+  margin-top: 1rem;
+  background-color: $ColorDarker;
+  padding: 1rem 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    color: $ColorLighter;
+  }
+
+  .social-links {
+    flex-grow: 1;
+
+    ul {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        font-size: 1.5rem;
+
+        a {
+          color: mix(white, $ColorLighter, 70%);
+          margin: .5rem;
+
+          &:hover {
+            color: mix(black, $ColorLighter, 10%);
+          }
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .copyright-notice {
+    flex-grow: 1;
+    padding: .5rem;
+    text-align: center;
+  }
+}
